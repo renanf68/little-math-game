@@ -17,6 +17,8 @@ const TextStyled = styled.p<BaseTextProps<HTMLParagraphElement>>`
   ${(props) =>
     props.truncate &&
     `
+    min-width: 0;
+    max-width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;

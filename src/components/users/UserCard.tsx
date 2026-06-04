@@ -32,8 +32,14 @@ const UserInfosFlex = styled.div`
   align-items: center;
 `;
 
+const UserName = styled.div`
+  flex: 1;
+  min-width: 0;
+`;
+
 const BoxesFlex = styled.div`
   display: flex;
+  flex-shrink: 0;
 `;
 
 interface UserCardProps {
@@ -56,9 +62,11 @@ export const UserCard = ({ user }: UserCardProps) => {
         {avatar && <img src={avatar} alt="avatar do usuário" width="100%" />}
       </UserAvatarBox>
       <UserInfosFlex>
-        <Text fontSize="xl" fontWeight="500" lineHeight="0" truncate>
-          {firstName}
-        </Text>
+        <UserName>
+          <Text fontSize="xl" fontWeight="500" truncate>
+            {firstName}
+          </Text>
+        </UserName>
         <BoxesFlex>
           <LevelBadge level={user.level ?? 1} />
           <ScoreBadge score={user.record ?? 0} />
