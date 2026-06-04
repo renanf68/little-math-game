@@ -1,11 +1,11 @@
+import React from "react";
 import styled from "styled-components";
-import { Text } from "../Text";
-import { User } from "../../types";
 import { useUserContext } from "../../context";
+import { User } from "../../types";
+import { getUserAvatar } from "../../utils/ages";
 import { LevelBadge } from "../LevelBadge";
 import { ScoreBadge } from "../ScoreBadge";
-import React from "react";
-import { getUserAvatar } from "../../utils/ages";
+import { Text } from "../Text";
 
 const UserCardStyled = styled.div`
   margin-top: 24px;
@@ -49,14 +49,15 @@ export const UserCard = ({ user }: UserCardProps) => {
     return getUserAvatar(user.age);
   }, [user?.age]);
   // UI
+  const firstName = user.name.split(" ")[0];
   return (
     <UserCardStyled onClick={() => handleUserSelect(user)}>
       <UserAvatarBox>
         {avatar && <img src={avatar} alt="avatar do usuário" width="100%" />}
       </UserAvatarBox>
       <UserInfosFlex>
-        <Text fontSize="xl" fontWeight="500" lineHeight="0">
-          {user.name}
+        <Text fontSize="xl" fontWeight="500" lineHeight="0" truncate>
+          {firstName}
         </Text>
         <BoxesFlex>
           <LevelBadge level={user.level ?? 1} />

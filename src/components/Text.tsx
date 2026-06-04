@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 import { BaseTextProps } from "../types";
 
@@ -15,8 +14,18 @@ const TextStyled = styled.p<BaseTextProps<HTMLParagraphElement>>`
   line-height: ${(props) => props.lineHeight};
   text-align: ${(props) => props.textAlign};
   color: ${(props) => props.color ?? props.theme.colors.gray};
+  ${(props) =>
+    props.truncate &&
+    `
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  `}
 `;
 
-export const Text = (props: BaseTextProps<HTMLParagraphElement>) => {
-  return <TextStyled {...props} />;
+export const Text = ({
+  truncate,
+  ...props
+}: BaseTextProps<HTMLParagraphElement>) => {
+  return <TextStyled truncate={truncate} {...props} />;
 };

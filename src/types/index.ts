@@ -10,6 +10,7 @@ export interface BaseTextProps<T> extends React.HTMLAttributes<T> {
   lineHeight?: string;
   textAlign?: string;
   color?: string;
+  truncate?: boolean;
 }
 
 export type IconType =
